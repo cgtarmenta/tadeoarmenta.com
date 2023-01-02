@@ -1,5 +1,5 @@
 <template>
-<snake-game />
+<snake-game class="mt-5"/>
 </template>
 
 <script setup lang="ts">
