@@ -12,6 +12,18 @@ export const useDataStore = defineStore('dataStore', () => {
         github: 'TadeoArmenta',
         twitter: 'TadeoArmenta',
         linkedin: 'TadeoArmenta',
+        social: [
+            {
+                name: 'Github',
+                url: 'https://github.com/TadeoArmenta',
+                icon: 'github'
+            },
+            {
+                name: 'Twitter',
+                url: 'https://twitter.com/TadeoArmenta',
+                icon: 'twitter'
+            }
+        ],
     });
     const pages = ref([
         {name: '_hello', path: '/', current: computed(() => route.path === '/')},

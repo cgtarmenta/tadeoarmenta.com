@@ -1,13 +1,14 @@
 <template>
-  <MainNav />
-  <main class="flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
+  <MainNav class="fixed top-0 inset-x-0 "/>
+  <main class="relative py-12">
     <RouterView />
   </main>
-  <div></div>
+  <FooterMenu class="fixed hidden lg:block bottom-0 inset-x-0 "/>
 </template>
 
 <script setup lang="ts">
 import MainNav from "@/components/MainNav/MainNav.vue";
+import FooterMenu from "@/components/FooterMenu/FooterMenu.vue";
 </script>
 
 <script lang="ts">export default {name: "MainLayout"}</script>

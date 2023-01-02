@@ -7,4 +7,16 @@
         @apply bg-gray-500 text-slate-500;
         font-family: 'Fira Code', monospace;
     }
+    html {
+        @apply h-full;
+    }
+    body {
+        @apply h-full;
+    }
+    div#__next {
+        @apply h-full;
+    }
+    main {
+        @apply h-full
+    }
 }
