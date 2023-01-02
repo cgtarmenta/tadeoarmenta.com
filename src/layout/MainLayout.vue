@@ -1,8 +1,8 @@
 <template>
   <MainNav />
-  <div class="mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
     <RouterView />
-  </div>
+  </main>
   <div></div>
 </template>
 
