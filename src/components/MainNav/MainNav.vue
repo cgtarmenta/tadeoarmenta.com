@@ -1,9 +1,9 @@
 <template>
-  <nav class="border-b border-lines py-0 z-10">
-    <div class="mx-auto px-4 lg:px-6 lg:px-8">
-      <div class="flex h-fit items-center justify-between">
+  <nav class="border-b border-lines py-0 my-0 z-10">
+    <div class="mx-auto my-0 px-4 lg:pl-6 lg:pr-0">
+      <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <div class="flex-shrink-0 py-4">
+          <div class="flex-shrink-0">
             <div class="flex items-center my-auto h-8 w-auto text-slate-500 lowercase">{{ developer.name.replace(' ','-') }}</div>
           </div>
           <div class="hidden lg:ml-6 lg:block font-semibold">
@@ -11,18 +11,19 @@
               <RouterLink
                 :to="page.path"
                 class="px-7 py-4 text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"
-                :class="{ 'border-b-4 border-b-orange-500 text-white': page.current }"
-                >{{ page.name }}</RouterLink
+                :class="{ 'border-b-2 border-b-orange-500 text-white': page.current }"
               >
+                {{ page.name }}
+              </RouterLink>
             </template>
           </div>
         </div>
-        <div class="hidden lg:ml-6 lg:block">
+        <div class="hidden lg:ml-6 lg:flex h-full">
           <div class="flex items-center">
             <RouterLink
               to="/contact"
               class="px-3 lg:px-6 py-4 text-sm font-medium text-slate-500  border-l border-lines hover:text-gray-300"
-              :class="{ 'border-b-4 border-b-orange-500 text-white': '/contact' === $route.path }"
+              :class="{ 'border-b-2 border-b-orange-500 text-white': '/contact' === $route.path }"
             >_contact-me</RouterLink
             >
           </div>
