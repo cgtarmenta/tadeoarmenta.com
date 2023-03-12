@@ -5,38 +5,37 @@ import logger from "@/utils/logger";
 export const installRouter: Plugin = (app)=> {
   logger.info('installRouter plugin instanced')
 
-    const routes: Array<RouteRecordRaw>  = [
+  const routes: Array<RouteRecordRaw>  = [
     {
-        path: '/',
-        component: () => import('@/layout/MainLayout.vue'),
-        children: [
-            {
-                path: '/',
-                name: 'Home',
-                component: () => import('@/views/HomeView.vue')
-            },
-            {
-                path: '/about',
-                name: 'About',
-                component: () => import('@/views/AboutMeView.vue')
-            },
-            {
-                path: '/projects',
-                name: 'Projects',
-                component: () => import('@/views/ProjectsView.vue')
-            },
-            {
-                path: '/contact',
-                name: 'Contact',
-                component: () => import('@/views/ContactMeView.vue')
-            },
-            {
-                path: '/:pathMatch(.*)*',
-                name: 'NotFound',
-                // @ts-ignore
-                component: () => import('@/views/NotFoundView.vue')
-            }
-        ]
+      path: '/',
+      component: () => import('@/layout/MainLayout.vue'),
+      children: [
+        {
+          path: '/',
+          name: 'Home',
+          component: () => import('@/views/HomeView.vue')
+        },
+        {
+          path: '/about',
+          name: 'About',
+          component: () => import('@/views/AboutMeView.vue')
+        },
+        {
+          path: '/projects',
+          name: 'Projects',
+          component: () => import('@/views/ProjectsView.vue')
+        },
+        {
+          path: '/contact',
+          name: 'Contact',
+          component: () => import('@/views/ContactMeView.vue')
+        },
+        {
+          path: '/:pathMatch(.*)*',
+          name: 'NotFound',
+          component: () => import('@/views/NotFoundView.vue')
+        }
+      ]
     },
   ];
   logger.info('installRouter routes created')

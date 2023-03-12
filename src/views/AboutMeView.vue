@@ -1,5 +1,5 @@
 <template>
-
+  <div>Keep me</div>
 </template>
 
 <script setup>

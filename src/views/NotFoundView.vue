@@ -1,5 +1,5 @@
 <template>
-NotFound
+  NotFound
 </template>
 
 <script setup>

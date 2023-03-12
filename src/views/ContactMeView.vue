@@ -1,5 +1,5 @@
 <template>
-
+  <spa>KeepMe</spa>
 </template>
 
 <script setup>
