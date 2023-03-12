@@ -23,7 +23,7 @@ jobs:
           echo “Build production”
           yarn && yarn build
       - name: Deploy to production
-        uses: upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main
