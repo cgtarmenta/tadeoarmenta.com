@@ -23,15 +23,12 @@ jobs:
           echo “Build production”
           yarn && yarn build
       - name: Deploy to production
-        uses: peaceiris/actions-gh-pages@v3
+        uses: upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          cname: 2023.tadeoarmenta.com
-          keep_files: true
-          user_name: github-actions
-          user_email: contact@tadeoarmenta.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: main
+          FOLDER: build
+          CLEAN: true
 
 
   close_job:
