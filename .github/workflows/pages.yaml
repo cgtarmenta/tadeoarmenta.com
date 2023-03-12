@@ -25,10 +25,7 @@ jobs:
       - name: Deploy to production
         uses: actions/upload-pages-artifact@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main
-          FOLDER: build
-          CLEAN: true
+          path: ./build
 
 
   close_job:
