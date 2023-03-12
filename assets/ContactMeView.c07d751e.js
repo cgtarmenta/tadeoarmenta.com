@@ -1,0 +1,1 @@
+import{_ as t,g as o,w as a,f as n,o as s,e as c}from"./index.bf1bfd5c.js";const r={name:"ContactMeView"};function p(_,f,i,l,d,m){const e=n("spa");return s(),o(e,null,{default:a(()=>[c("KeepMe")]),_:1})}const x=t(r,[["render",p]]);export{x as default};

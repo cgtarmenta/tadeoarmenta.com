@@ -1,0 +1,1 @@
+import{_ as o,g as t,w as s,f as a,o as c,e as n}from"./index.bf1bfd5c.js";const r={name:"ProjectsView"};function p(_,f,i,l,d,m){const e=a("spa");return c(),t(e,null,{default:s(()=>[n("KeepMe")]),_:1})}const x=o(r,[["render",p]]);export{x as default};
