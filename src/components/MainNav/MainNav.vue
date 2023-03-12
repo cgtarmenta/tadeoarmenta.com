@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="hidden lg:ml-6 lg:block font-semibold">
-            <template v-for="(page, pageIdx) in pages" :key="pageIdx">
+            <template v-for="(page) in pages" :key="page">
               <RouterLink
                 :to="page.path"
                 class="px-7 py-4 text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"

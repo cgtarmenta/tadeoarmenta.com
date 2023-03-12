@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="hidden xs:ml-6 xs:flex xs:flex-row font-semibold">
-            <template v-for="(social, socialIdx) in developer.social" :key="socialIdx">
+            <template v-for="(social) in developer.social" :key="social">
               <RouterLink
                 :to="social.url"
                 class="px-4 py-4 h-full text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"
@@ -42,7 +42,7 @@ import SolidGithubIcon from "@/components/icons/SolidGithubIcon.vue";
 const icons = {
   twitter: SolidTwitterIcon,
   github: SolidGithubIcon
-};
+} as {[x:string]: any};
 const {developer} = useDataStore();
 </script>
 

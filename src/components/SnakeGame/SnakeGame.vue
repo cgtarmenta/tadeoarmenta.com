@@ -31,7 +31,7 @@ const directions = [
     move: {x: 0, y: 1}
   },
 ];
-const pressedKey = ref<number | undefined>(undefined);
+// const pressedKey = ref<number | undefined>(undefined);
 const width = ref(0);
 const height = ref(0);
 const food = ref({x: 0, y: 0});

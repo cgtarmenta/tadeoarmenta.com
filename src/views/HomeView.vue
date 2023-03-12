@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import SnakeGame from "@/components/SnakeGame/SnakeGame.vue";
+// import SnakeGame from "@/components/SnakeGame/SnakeGame.vue";
 import {useDataStore} from "@/stores/dataStore";
 const {developer} = useDataStore();
 </script>
