@@ -49,7 +49,7 @@
     <div v-if="showMenu" id="mobile-menu" class="relative lg:hidden bg-gray-500 h-screen">
       <div class="grid grid-cols-1 space-y-1 px-2 pt-2 pb-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <template v-for="(page, pageIdx) in pages" :key="pageIdx">
+        <template v-for="(page) in pages" :key="page">
           <RouterLink
             :to="page.path"
             class="px-3 py-4 text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"

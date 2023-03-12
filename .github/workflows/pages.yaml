@@ -1,0 +1,42 @@
+name: Deploy to production
+on:
+  pull_request:
+    branches:
+      - main
+    types: [ closed ]
+
+jobs:
+  merge_job:
+    # this job will only run if the PR has been merged
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo PR #${{ github.event.number }} has been merged
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - run: |
+          echo “Build production”
+          yarn && yarn build
+      - name: Deploy to production
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          cname: 2023.tadeoarmenta.com
+          keep_files: true
+          user_name: github-actions
+          user_email: contact@tadeoarmenta.com
+
+
+  close_job:
+    # this job will only run if the PR has been closed without being merged.
+    if: github.event.pull_request.merged == false
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo PR #${{ github.event.number }} has been closed without being merged
+
