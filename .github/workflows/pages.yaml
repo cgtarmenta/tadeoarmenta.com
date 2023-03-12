@@ -25,7 +25,7 @@ jobs:
       - name: Deploy to production
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "build/"
+          path: "dist/"
 
 
   close_job:
