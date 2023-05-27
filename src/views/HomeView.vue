@@ -39,7 +39,6 @@
 <script setup lang="ts">
 import {useDataStore} from "@/stores/dataStore";
 import SnakeGameComponent from "@/components/SnakeGame/SnakeGameComponent.vue";
-import type {SnakeGameConfig} from "@/components/SnakeGame/snakeGameTypes";
 import {ref} from "vue";
 import BackgroundSnakeSection from "@/components/images/BackgoundSnakeSection.vue";
 import SnakeBoard from "@/components/images/SnakeBoard.vue";

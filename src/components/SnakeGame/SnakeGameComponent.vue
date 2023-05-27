@@ -1,24 +1,19 @@
 <template>
   <div :class="[`w-${width}`, `h-${height}`, 'relative', 'flex', 'items-center', 'justify-center']">
     <SnakePlaceHolder v-if="!isGameStarted" />
-    <button v-if="!isGameStarted" class=" absolute p-2 bg-blue-500 text-white rounded bottom-1/4" @click="startGame">
-      Start
+    <button v-if="!isGameStarted" class="absolute p-2 bg-orange-500 text-stone-500 rounded bottom-8 py-2.5 px-3.5" @click="startGame">
+      start-game
     </button>
 
-    <div v-else class="w-full h-full relative">
+    <div v-else class="relative">
+      <SnakeBackground />
       <div
         v-for="(segment, index) in snake"
-        :key="index"
-        :class="['bg-green-500', `w-${width}`, `h-${height}`, 'absolute']"
+        :key="segment.id"
+        :class="['bg-green-500', `w-1.5`, `h-1.5`, 'absolute']"
         :style="{ top: `${segment.y}px`, left: `${segment.x}px`, opacity: (snake.length - index) / snake.length }"
       />
-
-      <div
-        v-for="(item, index) in food"
-        :key="index"
-        :class="['bg-red-500', `w-5`, `h-5`, 'absolute']"
-        :style="{ top: `${item.y}px`, left: `${item.x}px` }"
-      />
+      <SnakeFood :style="{ top: `${foodItems.y}px`, left: `${foodItems.x}px` }" />
     </div>
   </div>
 </template>
@@ -26,6 +21,9 @@
 <script setup lang="ts">
 import {computed, ref, watchEffect} from 'vue';
 import SnakePlaceHolder from "@/components/images/SnakePlaceHolder.vue";
+import SnakeBackground from "@/components/images/SnakeBackground.vue";
+import {useSnakeGame} from "@/components/SnakeGame/useSnakeGame";
+import SnakeFood from "@/components/images/SnakeFood.vue";
 interface Properties {
   width: string;
   height: string;
@@ -40,19 +38,25 @@ const props = withDefaults(defineProps<Properties>(), {
 
 const emit = defineEmits(['update:food']);
 
-const snake = ref([]);
-const food = ref([]);
-const isGameStarted = ref(false);
-const startGame = () => {
-  isGameStarted.value = true;
-  // Initialize snake and food
+const config = {
+  cw: 1,
+  size: 50,
+  fps: 10,
+  targetScore: 10,
+  width: 239,
+  height: 405,
 };
+console.log("Config before starting game: ", config);
+const {length: snake, food: foodItems, startGame, hasStarted, resetGame} = useSnakeGame(config);
+
+const isGameStarted = computed(() => hasStarted.value);
 
 watchEffect(() => {
-  if (props.food < food.value.length) {
-    emit('update:food', props.food);
+  console.log("Game state: ", isGameStarted.value ? "Game has started" : "Game not started");
+});
+watchEffect(() => {
+  if (props.food === 0) {
+    resetGame();
   }
 });
-
 </script>
-
