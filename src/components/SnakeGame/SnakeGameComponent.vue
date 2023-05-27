@@ -10,7 +10,7 @@
       <div
         v-for="(segment, index) in snake"
         :key="segment.id"
-        :class="['bg-green-500', `w-1.5`, `h-1.5`, 'absolute']"
+        :class="['bg-emerald-500', `w-1.5`, `h-1.5`, 'absolute']"
         :style="{ top: `${segment.y}px`, left: `${segment.x}px`, opacity: (snake.length - index) / snake.length }"
       />
       <SnakeFood :style="{ top: `${foodItems.y}px`, left: `${foodItems.x}px` }" />
