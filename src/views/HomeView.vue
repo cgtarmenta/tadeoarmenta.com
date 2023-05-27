@@ -1,6 +1,6 @@
 <template>
   <article class="flex flex-row h-full">
-    <section class="grid grid-cols-1 md: grid-cols-2 w-full">
+    <section class="grid grid-cols-1 md:grid-cols-2 w-full">
       <section class="my-auto w-full text-white items-end px-6 md:px-8 lg:px-72 space-y-3.5">
         <span>Hi all. I am</span>
         <h1 class="text-7xl">
@@ -17,18 +17,38 @@
           <p class="text-[#4D5BCE]">const</p>
           <p class="text-[#43D9AD]">githubLink</p>
           <p class="text-white">=</p>
-          <p class="text-[#E99287]">https://github.com/cgtarmenta</p>
+          <p class="text-[#E99287]">"https://github.com/cgtarmenta"</p>
         </span>
       </section>
-      <section class="hidden md:flex flex-row h-full max-h-full w-full max-w-full" />
+      <section class="relative hidden md:flex flex-row h-full max-h-full w-full max-w-full p-8 items-center">
+        <BackgroundSnakeSection class="absolute right-0 left-0 top-0 bottom-0 z-0" />
+        <div class="p-8">
+          <SnakeBoard class="absolute top-[28%]" />
+          <SnakeGameComponent
+            :width="width"
+            :height="height"
+            :food="food"
+            class="ml-8"
+          />
+        </div>
+      </section>
     </section>
   </article>
 </template>
 
 <script setup lang="ts">
-// import SnakeGame from "@/components/SnakeGame/SnakeGame.vue";
 import {useDataStore} from "@/stores/dataStore";
+import SnakeGameComponent from "@/components/SnakeGame/SnakeGameComponent.vue";
+import type {SnakeGameConfig} from "@/components/SnakeGame/snakeGameTypes";
+import {ref} from "vue";
+import BackgroundSnakeSection from "@/components/images/BackgoundSnakeSection.vue";
+import SnakeBoard from "@/components/images/SnakeBoard.vue";
 const {developer} = useDataStore();
+
+const width = '60';
+const height = '96';
+const food = ref(12);
+
 </script>
 
 <script lang="ts">export default {name: "HomeView"}</script>

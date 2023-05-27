@@ -151,11 +151,7 @@ const play = (conf: Record<string, any>) => {
 onMounted(() => {
   play({fps: 100, size: 4});
 });
-
 </script>
 
 <script lang="ts">export default {name: "SnakeGame"}</script>
 
-<style scoped>
-
-</style>
