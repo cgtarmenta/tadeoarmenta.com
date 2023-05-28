@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-row h-full">
+  <article class="flex flex-row h-full max-w-full">
     <section class="grid grid-cols-1 md:grid-cols-2 w-full">
       <section class="my-auto w-full text-white items-end px-6 md:px-8 lg:px-72 space-y-3.5">
         <span>Hi all. I am</span>
@@ -22,13 +22,12 @@
       </section>
       <section class="relative hidden md:flex flex-row h-full max-h-full w-full max-w-full p-8 items-center">
         <BackgroundSnakeSection class="absolute right-0 left-0 top-0 bottom-0 z-0" />
-        <div class="flex flex-row justify-between p-8 space-x-8">
-          <SnakeBoard class="absolute top-[28%]" />
+        <div class="relative flex flex-row justify-between p-8 space-x-8">
+          <SnakeBoard class="absolute top-0 right-8 bottom-0 left-8" />
           <SnakeGameComponent
             :width="width"
             :height="height"
             :food="food"
-            class="ml-8"
             @update:food="onFoodEaten"
             @game-over="food = 12"
           />
