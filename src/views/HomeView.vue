@@ -22,7 +22,7 @@
       </section>
       <section class="relative hidden md:flex flex-row h-full max-h-full w-full max-w-full p-8 items-center">
         <BackgroundSnakeSection class="absolute right-0 left-0 top-0 bottom-0 z-0" />
-        <div class="p-8">
+        <div class="flex flex-row justify-between p-8 space-x-8">
           <SnakeBoard class="absolute top-[28%]" />
           <SnakeGameComponent
             :width="width"
@@ -30,7 +30,19 @@
             :food="food"
             class="ml-8"
             @update:food="onFoodEaten"
+            @game-over="food = 12"
           />
+          <div class="flex flex-col justify-start gap-y-8">
+            <SnakeControlsImage class="bg-stone-500 opacity-20 rounded" />
+            <div class="grid grid-cols-6 grid-rows-2 items-center justify-center">
+              <component
+                :is="i > food ? SnakeFoodEaten : SnakeFoodMarker"
+                v-for="i in 12"
+                :key="i"
+                class="col-span-1"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </section>
@@ -44,6 +56,9 @@ import {ref} from "vue";
 import BackgroundSnakeSection from "@/components/images/BackgoundSnakeSection.vue";
 import SnakeBoard from "@/components/images/SnakeBoard.vue";
 import logger from "@/utils/logger";
+import SnakeControlsImage from "@/components/images/SnakeControlsImage.vue";
+import SnakeFoodEaten from "@/components/images/SnakeFoodEaten.vue";
+import SnakeFoodMarker from "@/components/images/SnakeFoodMarker.vue";
 const {developer} = useDataStore();
 
 const width = '60';

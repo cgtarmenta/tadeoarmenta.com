@@ -7,12 +7,7 @@
 
     <div v-else class="relative">
       <SnakeBackground />
-      <div
-        v-for="(segment, index) in snake"
-        :key="segment.id"
-        :class="['bg-emerald-500', `w-1.5`, `h-1.5`, 'absolute']"
-        :style="{ top: `${segment.y}px`, left: `${segment.x}px`, opacity: (snake.length - index) / snake.length }"
-      />
+      <SnakeComponent :snake="snake" />
       <SnakeFood :style="{ top: `${foodItems.y}px`, left: `${foodItems.x}px` }" />
     </div>
   </div>
@@ -24,6 +19,7 @@ import SnakePlaceHolder from "@/components/images/SnakePlaceHolder.vue";
 import SnakeBackground from "@/components/images/SnakeBackground.vue";
 import {useSnakeGame} from "@/components/SnakeGame/useSnakeGame";
 import SnakeFood from "@/components/images/SnakeFood.vue";
+import SnakeComponent from "@/components/SnakeGame/SnakeComponent.vue";
 interface Properties {
   width: string;
   height: string;
@@ -36,7 +32,7 @@ const props = withDefaults(defineProps<Properties>(), {
   food: 10,
 });
 
-const emit = defineEmits(['update:food']);
+const emit = defineEmits(['update:food', 'gameOver', 'gameWon']);
 
 const config = {
   cw: 1,
@@ -56,6 +52,7 @@ watchEffect(() => {
 });
 watchEffect(() => {
   if (props.food === 0) {
+    emit('gameWon');
     resetGame();
   }
 });

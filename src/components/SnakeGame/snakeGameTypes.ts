@@ -19,3 +19,5 @@ export interface Position {
 }
 
 export type Direction = "up" | "down" | "left" | "right";
+
+export type GameEvent = "update:food" | "gameOver" | "gameWon";

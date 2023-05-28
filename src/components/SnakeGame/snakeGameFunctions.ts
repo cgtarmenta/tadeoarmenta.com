@@ -1,4 +1,10 @@
-import type {Direction, Position, SnakeGameConfig, SnakeSegment} from "@/components/SnakeGame/snakeGameTypes";
+import type {
+  Direction,
+  GameEvent,
+  Position,
+  SnakeGameConfig,
+  SnakeSegment
+} from "@/components/SnakeGame/snakeGameTypes";
 import type {Ref} from "vue";
 
 export const start = (
@@ -26,13 +32,13 @@ export const checkCollision = (
   ny: number,
   width: number,
   height: number,
-  cw: number,  // Añade 'cw' como argumento aquí
+  cw: number,
   array: SnakeSegment[]
 ) => {
   if (
     nx < 0 ||
     ny < 0 ||
-    nx >= width / cw ||  // Divide width y height por 'cw' aquí
+    nx >= width / cw ||
     ny >= height / cw ||
     array.slice(0, -1).some(item => item.x === nx && item.y === ny) // Excluye el último segmento de la serpiente
   ) {
@@ -81,7 +87,7 @@ export const spawnFood = (
   const boundary = 25; // The boundary from the edges
 
   food.value = {
-    x: boundary + Math.floor(Math.random() * Math.floor((width - 2 * boundary) / cw)),  // Subtract boundary * 2 from width and height here
+    x: boundary + Math.floor(Math.random() * Math.floor((width - 2 * boundary) / cw)),
     y: boundary + Math.floor(Math.random() * Math.floor((height - 2 * boundary) / cw)),
   };
 
@@ -97,7 +103,7 @@ export const play = (
   score: Ref<number>,
   config: SnakeGameConfig,
   isGameOver: Ref<boolean>,
-  emit: (event: 'update:food') => void
+  emit: (event: GameEvent) => void
 ): boolean => {
   const { width, height, cw } = config;
 
@@ -125,8 +131,6 @@ export const play = (
       const tail = {id: length.value.length + i, x: tailSegment.x, y: tailSegment.y} as SnakeSegment;
       length.value.push(tail);
     }
-    // const tail = { id: length.value.length, x: nx, y: ny };
-    // length.value.push(tail);
     score.value++;
     spawnFood(food, width, height, cw);
     emit("update:food");
