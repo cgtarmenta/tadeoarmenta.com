@@ -10,14 +10,14 @@
           > {{ developer.title }}
         </h2>
         <span class="text-xl text-gray-400 pt-6">
-          <p>// complete the game to continue</p>
-          <p>// you can also see it on my Github page</p>
+          <span>// complete the game to continue</span>
+          <span>// you can also see it on my Github page</span>
         </span>
         <span class="inline-flex justify-start items-center space-x-3">
-          <p class="text-[#4D5BCE]">const</p>
-          <p class="text-[#43D9AD]">githubLink</p>
-          <p class="text-white">=</p>
-          <p class="text-[#E99287]">"https://github.com/cgtarmenta"</p>
+          <span class="text-[#4D5BCE]">const</span>
+          <span class="text-[#43D9AD]">githubLink</span>
+          <span class="text-white">=</span>
+          <span class="text-[#E99287]">"https://github.com/cgtarmenta"</span>
         </span>
       </section>
       <section class="relative hidden md:flex flex-row h-full max-h-full w-full max-w-full p-8 items-center">
@@ -33,14 +33,26 @@
             @game-over="food = 12"
           />
           <div class="flex flex-col justify-start gap-y-8">
-            <SnakeControlsImage class="bg-stone-500 opacity-20 rounded" />
-            <div class="grid grid-cols-6 grid-rows-2 items-center justify-center">
-              <component
-                :is="i > food ? SnakeFoodEaten : SnakeFoodMarker"
-                v-for="i in 12"
-                :key="i"
-                class="col-span-1"
-              />
+            <div class="bg-stone-500 bg-opacity-20 p-3.5 rounded-md z-10">
+              <span class="text-white flex flex-col mb-3.5">
+                <span>// use keyboard</span>
+                <span>// food left</span>
+              </span>
+              <SnakeControlsImage />
+            </div>
+            <div class="grid col-auto gap-y-1">
+              <span class="text-white">
+                <span>// food left</span>
+              </span>
+              <div class="grid grid-cols-6 grid-rows-2 items-center justify-center">
+                <component
+                  :is="SnakeFoodMarker"
+                  v-for="i in 12"
+                  :key="i"
+                  class="col-span-1"
+                  :class="i > food ? 'opacity-20' : ''"
+                />
+              </div>
             </div>
           </div>
         </div>
