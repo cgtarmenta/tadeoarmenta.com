@@ -17,14 +17,24 @@ export const useDataStore = defineStore('dataStore', () => {
     social: [
       {
         name: 'Github',
-        url: 'https://github.com/TadeoArmenta',
+        url: 'https://github.com/cgtarmenta',
         icon: 'github'
       },
       {
         name: 'Twitter',
         url: 'https://twitter.com/TadeoArmenta',
         icon: 'twitter'
-      }
+      },
+      {
+        name: 'Linkedin',
+        url: 'https://www.linkedin.com/in/tadeoarmenta',
+        icon: 'linkedin'
+      },
+      {
+        name: 'Upwork',
+        url: 'https://www.upwork.com/freelancers/~0130e45a6e324fd76a?viewMode=1',
+        icon: 'upwork'
+      },
     ],
   });
   const pages = ref([

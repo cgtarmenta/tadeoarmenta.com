@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-row h-full max-w-full">
+  <article class="flex flex-row h-full max-w-full max-h-fit overflow-hidden">
     <section class="grid grid-cols-1 md:grid-cols-2 w-full">
       <section class="my-auto w-full text-white items-end px-6 md:px-8 lg:px-72 space-y-3.5">
         <span>Hi all. I am</span>
@@ -35,7 +35,7 @@
             <div class="bg-stone-500 bg-opacity-20 p-3.5 rounded-md z-10">
               <span class="text-white flex flex-col mb-3.5">
                 <span>// use keyboard</span>
-                <span>// food left</span>
+                <span>// arrows to play</span>
               </span>
               <SnakeControlsImage />
             </div>
