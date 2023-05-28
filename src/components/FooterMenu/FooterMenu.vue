@@ -8,14 +8,14 @@
               find me in:
             </div>
           </div>
-          <div class="hidden xs:ml-6 xs:flex xs:flex-row font-semibold">
+          <div class="hidden sm:ml-6 sm:flex sm:flex-row font-semibold">
             <template v-for="(social) in developer.social" :key="social">
-              <RouterLink
-                :to="social.url"
+              <a
+                :href="social.url"
                 class="px-4 py-4 h-full text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"
               >
                 <component :is="icons[social.icon]" class="h-6 w-6" />
-              </RouterLink>
+              </a>
             </template>
           </div>
         </div>
@@ -39,9 +39,13 @@
 import {useDataStore} from "@/stores/dataStore";
 import SolidTwitterIcon from "@/components/icons/SolidTwitterIcon.vue";
 import SolidGithubIcon from "@/components/icons/SolidGithubIcon.vue";
+import SolidLinkedinIcon from "@/components/icons/SolidLinkedinIcon.vue";
+import SolidUpworkIcon from "@/components/icons/SolidUpworkIcon.vue";
 const icons = {
   twitter: SolidTwitterIcon,
-  github: SolidGithubIcon
+  github: SolidGithubIcon,
+  linkedin: SolidLinkedinIcon,
+  upwork: SolidUpworkIcon,
 } as {[x:string]: any};
 const {developer} = useDataStore();
 </script>
