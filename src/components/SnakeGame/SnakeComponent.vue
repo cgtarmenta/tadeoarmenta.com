@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { SnakeSegment } from "@/components/SnakeGame/snakeGameTypes";
+import type { SnakeSegment } from "@/components/SnakeGame/snakeGameTypes";
 
 const props = defineProps({
   snake: {

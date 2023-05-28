@@ -69,7 +69,6 @@ import BackgroundSnakeSection from "@/components/images/BackgoundSnakeSection.vu
 import SnakeBoard from "@/components/images/SnakeBoard.vue";
 import logger from "@/utils/logger";
 import SnakeControlsImage from "@/components/images/SnakeControlsImage.vue";
-import SnakeFoodEaten from "@/components/images/SnakeFoodEaten.vue";
 import SnakeFoodMarker from "@/components/images/SnakeFoodMarker.vue";
 const {developer} = useDataStore();
 
