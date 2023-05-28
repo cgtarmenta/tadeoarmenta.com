@@ -29,6 +29,7 @@
             :height="height"
             :food="food"
             class="ml-8"
+            @update:food="onFoodEaten"
           />
         </div>
       </section>
@@ -42,11 +43,17 @@ import SnakeGameComponent from "@/components/SnakeGame/SnakeGameComponent.vue";
 import {ref} from "vue";
 import BackgroundSnakeSection from "@/components/images/BackgoundSnakeSection.vue";
 import SnakeBoard from "@/components/images/SnakeBoard.vue";
+import logger from "@/utils/logger";
 const {developer} = useDataStore();
 
 const width = '60';
 const height = '96';
 const food = ref(12);
+
+const onFoodEaten = () => {
+  logger.info("Food eaten");
+  food.value--;
+};
 
 </script>
 

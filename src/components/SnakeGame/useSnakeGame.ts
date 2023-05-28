@@ -1,13 +1,13 @@
 import { ref, onUnmounted } from "vue";
-import type { Position, SnakeGameConfig, SnakeSegment } from "./snakeGameTypes";
+import type {Direction, Position, SnakeGameConfig, SnakeSegment} from "./snakeGameTypes";
 import { keyController } from "./keyController";
 import { play, start, spawnFood } from "./snakeGameFunctions";
 
-export function useSnakeGame(config: SnakeGameConfig) {
+export function useSnakeGame(config: SnakeGameConfig, emit: (event: 'update:food') => void) {
   const length = ref<SnakeSegment[]>([]);
   const food = ref<Position>({ x: 0, y: 0 });
   const score = ref<number>(0);
-  const direction = ref<string | undefined>("");
+  const direction = ref<Direction | undefined>('right');
   const configuration = ref<SnakeGameConfig>(config);
   const isGameOver = ref<boolean>(false);
 
@@ -38,7 +38,8 @@ export function useSnakeGame(config: SnakeGameConfig) {
         direction,
         score,
         config,
-        isGameOver
+        isGameOver,
+        emit
       );
 
       if (gameOver) {

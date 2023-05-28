@@ -47,7 +47,7 @@ const config = {
   height: 405,
 };
 console.log("Config before starting game: ", config);
-const {length: snake, food: foodItems, startGame, hasStarted, resetGame} = useSnakeGame(config);
+const {length: snake, food: foodItems, startGame, hasStarted, resetGame} = useSnakeGame(config, emit);
 
 const isGameStarted = computed(() => hasStarted.value);
 

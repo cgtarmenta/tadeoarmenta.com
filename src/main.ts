@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+// @ts-ignore—This is nonsense, but it works
 import App from './App.vue'
 import {installStorage} from "@/plugins/piniaStorage";
 import {installRouter} from "./router";

@@ -1,33 +1,36 @@
 import type { Ref } from "vue";
-import type { Position } from "./snakeGameTypes";
+import type { Direction, Position } from "./snakeGameTypes";
+import { handleDirectionChange } from "./snakeGameFunctions";
 
-export const keyController = (direction: Ref<string | undefined>) => {
-  const directions: { direction: string; keyCode: number; move: Position }[] = [
+export const keyController = (direction: Ref<Direction | undefined>) => {
+  const directions: { direction: Direction; key: string; move: Position }[] = [
     {
       direction: "left",
-      keyCode: 37,
+      key: "ArrowLeft",
       move: { x: -1, y: 0 },
     },
     {
       direction: "up",
-      keyCode: 38,
+      key: "ArrowUp",
       move: { x: 0, y: -1 },
     },
     {
       direction: "right",
-      keyCode: 39,
+      key: "ArrowRight",
       move: { x: 1, y: 0 },
     },
     {
       direction: "down",
-      keyCode: 40,
+      key: "ArrowDown",
       move: { x: 0, y: 1 },
     },
   ];
 
   document.addEventListener("keydown", (e) => {
-    const newDirection = directions.find((d) => d.keyCode === e.keyCode)?.direction;
-    console.log("Setting direction:", newDirection);
-    direction.value = newDirection;
+    const newDirection = directions.find((d) => d.key === e.key)?.direction;
+    console.log("Attempting to set a direction:", newDirection);
+    if (newDirection) {
+      handleDirectionChange(direction, newDirection);
+    }
   });
 };

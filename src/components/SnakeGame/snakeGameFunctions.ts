@@ -1,4 +1,4 @@
-import type {Position, SnakeGameConfig, SnakeSegment} from "@/components/SnakeGame/snakeGameTypes";
+import type {Direction, Position, SnakeGameConfig, SnakeSegment} from "@/components/SnakeGame/snakeGameTypes";
 import type {Ref} from "vue";
 
 export const start = (
@@ -96,7 +96,8 @@ export const play = (
   direction: Ref<string | undefined>,
   score: Ref<number>,
   config: SnakeGameConfig,
-  isGameOver: Ref<boolean>
+  isGameOver: Ref<boolean>,
+  emit: (event: 'update:food') => void
 ): boolean => {
   const { width, height, cw } = config;
 
@@ -119,10 +120,16 @@ export const play = (
   }
 
   if (checkFoodCollision({ x: nx, y: ny }, food.value, cw, 22)) { // suponiendo que 22 es el tamaño de la comida
-    const tail = { id: length.value.length, x: nx, y: ny };
-    length.value.push(tail);
+    const tailSegment = length.value[length.value.length - 1];
+    for (let i = 0; i < 5; i++) {
+      const tail = {id: length.value.length + i, x: tailSegment.x, y: tailSegment.y} as SnakeSegment;
+      length.value.push(tail);
+    }
+    // const tail = { id: length.value.length, x: nx, y: ny };
+    // length.value.push(tail);
     score.value++;
     spawnFood(food, width, height, cw);
+    emit("update:food");
   } else if (checkCollision(nx, ny, width, height, cw, length.value)) {
     isGameOver.value = true;
     return true;
@@ -138,3 +145,27 @@ export const play = (
   return false;
 };
 
+const oppositeDirections: { [key in Direction]: Direction } = {
+  up: "down",
+  down: "up",
+  left: "right",
+  right: "left",
+};
+
+export const handleDirectionChange = (
+  direction: Ref<Direction | undefined>,
+  newDirection: Direction | undefined
+): void => {
+  // Si no se ha definido una nueva dirección, no hagas nada
+  if (!newDirection) {
+    return;
+  }
+
+  // Si la dirección actual es la opuesta a la nueva dirección, no cambies de dirección
+  if (direction.value && oppositeDirections[direction.value] === newDirection) {
+    return;
+  }
+
+  // Si hemos pasado todas las comprobaciones, establece la nueva dirección
+  direction.value = newDirection;
+};
