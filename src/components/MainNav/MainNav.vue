@@ -4,11 +4,11 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <div class="flex items-center my-auto h-8 w-auto text-slate-500 lowercase">
+            <div class="flex items-center my-auto h-8 w-[301px] max-w-[311px] text-slate-500 lowercase">
               {{ developer.name.replace(' ','-') }}
             </div>
           </div>
-          <div class="hidden lg:ml-6 lg:block font-semibold">
+          <div class="hidden lg: lg:block font-semibold">
             <template v-for="(page) in pages" :key="page">
               <RouterLink
                 :to="page.path"
