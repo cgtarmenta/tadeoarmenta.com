@@ -9,11 +9,13 @@
         <h2 class="text-3xl text-[#4D5BCE]">
           > {{ developer.title }}
         </h2>
-        <span class="text-xl text-gray-400 pt-6">
+        <span class="flex flex-wrap justify-start items-center space-x-3 text-gray-400">
           <span>// complete the game to continue</span>
+        </span>
+        <span class="flex flex-wrap justify-start items-center space-x-3 text-gray-400">
           <span>// you can also see it on my Github page</span>
         </span>
-        <span class="inline-flex justify-start items-center space-x-3">
+        <span class="flex flex-wrap justify-start items-center space-x-3">
           <span class="text-[#4D5BCE]">const</span>
           <span class="text-[#43D9AD]">githubLink</span>
           <span class="text-white">=</span>
