@@ -9,17 +9,17 @@
         <h2 class="text-3xl text-[#4D5BCE]">
           > {{ developer.title }}
         </h2>
-        <span class="flex flex-wrap justify-start items-center space-x-3 text-gray-400">
+        <span class="flex flex-wrap md:block justify-start items-center space-x-3 text-gray-400">
           <span>// complete the game to continue</span>
         </span>
-        <span class="flex flex-wrap justify-start items-center space-x-3 text-gray-400">
+        <span class="flex flex-wrap md:block justify-start items-center space-x-3 text-gray-400">
           <span>// you can also see it on my Github page</span>
         </span>
-        <span class="flex flex-wrap justify-start items-center space-x-3">
+        <span class="flex flex-wrap md:block justify-start items-center space-x-3">
           <span class="text-[#4D5BCE]">const</span>
           <span class="text-[#43D9AD]">githubLink</span>
           <span class="text-white">=</span>
-          <span class="text-[#E99287]">"https://github.com/cgtarmenta"</span>
+          <span class="text-[#E99287] cursor-pointer" @click="openInNewTab('https://github.com/cgtarmenta')">"https://github.com/cgtarmenta"</span>
         </span>
       </section>
       <section class="relative hidden md:flex flex-row h-full max-h-full w-full max-w-full p-8 items-center">
@@ -81,6 +81,7 @@ const onFoodEaten = () => {
   logger.info("Food eaten");
   food.value--;
 };
+const openInNewTab = (url:string) => window.open(url, '_blank').focus();
 
 </script>
 
