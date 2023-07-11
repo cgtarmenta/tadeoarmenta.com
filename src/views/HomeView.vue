@@ -81,7 +81,7 @@ const onFoodEaten = () => {
   logger.info("Food eaten");
   food.value--;
 };
-const openInNewTab = (url:string) => window.open(url, '_blank').focus();
+const openInNewTab = (url:string) => window?.open(url, '_blank')?.focus();
 
 </script>
 
