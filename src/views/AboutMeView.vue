@@ -27,6 +27,9 @@
         </div>
       </LabeledCollapsible>
     </template>
+    <template #tabs>
+      <CommentedTextBlock :text="developer.about" size="md"/>
+    </template>
   </PageLayout>
 </template>
 
@@ -37,6 +40,9 @@ import SolidPhoneIcon from "@/components/icons/SolidPhoneIcon.vue";
 import SolidEnvelopIcon from "@/components/icons/SolidEnvelopIcon.vue";
 import IconCollapsible from "@/components/ui/IconCollapsible.vue";
 import SolidFolderIcon from "@/components/icons/SolidFolderIcon.vue";
+import CommentedTextBlock from "@/components/ui/CommentedTextBlock.vue";
+import {useDataStore} from "@/stores/dataStore";
+const { developer } = useDataStore();
 </script>
 
 <script lang="ts">export default {name: "AboutMeView"}</script>
