@@ -36,6 +36,7 @@ export const useDataStore = defineStore('dataStore', () => {
         icon: 'upwork'
       },
     ],
+    about: "I'm Tadeo Armenta, a senior JS/ TS full-stack developer from Spain. I'm a 40 years old guy, with 3 beautiful kids, so, as you can imagine, I'm dead serious about working matters, I'm extremely disciplined, proactive, and a proficient developer, with broad experience in NodeJS and its stacks. I have more than 15-year experience in front and backend development. I work mainly with NodeJS and have broad experience leading development teams and working as a one-man wolfpack. I got profuse knowledge in MongoDB and ExpressJS for API development, winch is part of my main skills. I'm a hard worker, committed, auto-disciplined, and goal-oriented guy."
   });
   const pages = ref([
     {name: '_hello', path: '/', current: computed(() => route.path === '/')},
