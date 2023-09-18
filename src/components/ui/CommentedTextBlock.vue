@@ -1,5 +1,5 @@
 <template>
-  <div :class="widthClassMap[size]" ref="containerDiv" class="relative p-4 max-w-full text-lynch">
+  <div :class="widthClass" ref="containerDiv" class="relative p-4 max-w-full text-lynch">
     <pre class="js-comment text-lynch relative z-10 pl-6">{{ formatedText }}</pre>
   </div>
 </template>
@@ -15,24 +15,24 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: "sm"  // default to "sm" if no size prop is passed
+    default: "sm"  // default to “sm” if no size prop is passed
   }
 });
 
 const widthClassMap = {
   sm: 'w-[200px] lg:w-[520px]',
-  md: 'w-[250px] lg:w-[700px]',
-  // add more sizes as needed
+  md: 'w-[450px] lg:w-[750px]',
 };
+const widthClass = computed<string>(() => widthClassMap[props.size as keyof typeof widthClassMap]);
 
-let maxLineLength = ref(120);
+const maxLineLength = ref(240);
 
 onMounted(() => {
   if ('ResizeObserver' in window && containerDiv.value) {
     const resizeObserver = new ResizeObserver(entries => {
       for (let entry of entries) {
         // Here, 7 is an assumed average pixel width of a monospace character in Fira Code font.
-        maxLineLength.value = Math.floor(entry.contentRect.width / 7);
+        maxLineLength.value = Math.floor(entry.contentRect.width / 12);
       }
     });
     resizeObserver.observe(containerDiv.value);
@@ -50,14 +50,18 @@ const formatAsBlockComment = (text: string, maxLineLength: number) => {
 
   const words = text.split(' ');
 
-  words.forEach(word => {
-    if (currentLine.length + word.length > maxLineLength) {
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+
+    // Check if adding the next word to the current line will exceed the max length
+    if (currentLine.length + word.length + 1 > maxLineLength) {
       result += currentLine + '\n';
-      currentLine = ' * ' + word;
+      currentLine = ' * ' + word;  // Start a new line with the word
     } else {
+      // If adding a space and the next word doesn't exceed max length
       currentLine += ' ' + word;
     }
-  });
+  }
 
   // Add any remaining content
   if (currentLine.trim() !== '*') {
@@ -67,6 +71,7 @@ const formatAsBlockComment = (text: string, maxLineLength: number) => {
   result += ' **/';
   return result;
 }
+
 
 const formatedText = computed(() => formatAsBlockComment(props.text, maxLineLength.value));
 </script>
