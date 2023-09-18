@@ -40,7 +40,14 @@ export const useDataStore = defineStore('dataStore', () => {
   });
   const pages = ref([
     {name: '_hello', path: '/', current: computed(() => route.path === '/')},
-    {name: '_about-me', path: '/about', current: computed(() => route.path === '/about')},
+    {
+      name: '_about-me',
+      path: '/about',
+      current: computed(() => route.path === '/about'),
+      menu: {
+
+      }
+    },
     {name: '_projects', path: '/projects', current: computed(() => route.path === '/projects')},
   ])
 
