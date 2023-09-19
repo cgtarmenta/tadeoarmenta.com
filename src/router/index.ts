@@ -40,7 +40,7 @@ export const installRouter: Plugin = (app)=> {
   ];
   logger.info('installRouter routes created')
   const Router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/'),
     routes:routes,
     scrollBehavior(_to: RouteLocationNormalized, _from: RouteLocationNormalizedLoaded, savedPosition) {
       return savedPosition || { left: 0, top: 0 };

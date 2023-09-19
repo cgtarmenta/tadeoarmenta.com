@@ -2,7 +2,7 @@
   <PageLayout>
     <template #menu>
       <LabeledCollapsible title="personal-info" border border-class="border-b border-lines" class="text-white">
-        <IconCollapsible title="bio" icon="user" :border="false" >
+        <IconCollapsible title="bio" icon="user" :border="false">
           <template #icon>
             <SolidFolderIcon class="h-4 w-4 text-tonys-pink" />
           </template>
@@ -28,7 +28,9 @@
       </LabeledCollapsible>
     </template>
     <template #tabs>
-      <CommentedTextBlock :text="developer.about" size="md"/>
+      <LineCounterWrapper>
+        <CommentedTextBlock :text="developer.about" size="md" />
+      </LineCounterWrapper>
     </template>
   </PageLayout>
 </template>
@@ -42,6 +44,7 @@ import IconCollapsible from "@/components/ui/IconCollapsible.vue";
 import SolidFolderIcon from "@/components/icons/SolidFolderIcon.vue";
 import CommentedTextBlock from "@/components/ui/CommentedTextBlock.vue";
 import {useDataStore} from "@/stores/dataStore";
+import LineCounterWrapper from "@/components/ui/LineCounterWrapper.vue";
 const { developer } = useDataStore();
 </script>
 

@@ -3,6 +3,8 @@
 #
 # Recommended template: Node.gitignore
 .idea
+.idea/*
+.idea/**/*
 # TODO: where does this rule come from?
 docs/_book
 
