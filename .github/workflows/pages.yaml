@@ -38,6 +38,7 @@ jobs:
       - run: |
           echo “Build production”
           yarn && yarn build
+          cp dist/index.html dist/404.html
       - name: Deploy to production
         uses: actions/upload-pages-artifact@v1
         with:
