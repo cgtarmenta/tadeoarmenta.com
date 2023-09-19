@@ -1,5 +1,5 @@
 <template>
-  <div :class="widthClass" ref="containerDiv" class="relative p-4 max-w-full text-lynch">
+  <div ref="containerDiv" :class="widthClass" class="relative p-0 max-w-full text-lynch">
     <pre class="js-comment text-lynch relative z-10 pl-6">{{ formatedText }}</pre>
   </div>
 </template>
@@ -30,7 +30,7 @@ const maxLineLength = ref(240);
 onMounted(() => {
   if ('ResizeObserver' in window && containerDiv.value) {
     const resizeObserver = new ResizeObserver(entries => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         // Here, 7 is an assumed average pixel width of a monospace character in Fira Code font.
         maxLineLength.value = Math.floor(entry.contentRect.width / 12);
       }
