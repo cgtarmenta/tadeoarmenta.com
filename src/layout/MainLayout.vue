@@ -3,7 +3,7 @@
   <main class="relative py-12">
     <RouterView />
   </main>
-  <FooterMenu class="fixed hidden lg:block bottom-0 inset-x-0 " />
+  <FooterMenu class="fixed hidden bg-gray-500 lg:block bottom-0 inset-x-0 " />
 </template>
 
 <script setup lang="ts">
