@@ -8,7 +8,13 @@
       </div>
     </template>
     <template #menu>
-      <LabeledCollapsible title="personal-info" border border-class="border-b border-lines" class="text-white">
+      <LabeledCollapsible
+        title="personal-info"
+        border
+        border-class="border-b border-lines"
+        class="text-white"
+        @toggle="onOpenTab(1)"
+      >
         <IconCollapsible title="bio" icon="user" :border="false">
           <template #icon>
             <SolidFolderIcon class="h-4 w-4 text-tonys-pink" />
@@ -35,9 +41,18 @@
       </LabeledCollapsible>
     </template>
     <template #tabs>
-      <LineCounterWrapper>
-        <CommentedTextBlock :text="developer.about" size="md" />
-      </LineCounterWrapper>
+      <EditorTabContainer :tabs="openTabs" @close-tab="onCloseTab">
+        <template #default="{ activeTab }">
+          <div v-if="activeTab?.id === 1">
+            <LineCounterWrapper>
+              <CommentedTextBlock :text="developer.description" size="md" />
+            </LineCounterWrapper>
+          </div>
+          <div v-if="activeTab?.id === 2">
+            Content for Tab 2
+          </div>
+        </template>
+      </EditorTabContainer>
     </template>
   </PageLayout>
 </template>
@@ -55,7 +70,24 @@ import LineCounterWrapper from "@/components/ui/LineCounterWrapper.vue";
 import SolidConsoleIcon from "@/components/icons/SolidConosleIcon.vue";
 import SolidPersonIcon from "@/components/icons/SolidPersonIcon.vue";
 import SolidGamepadIcon from "@/components/icons/SolidGamepadIcon.vue";
+import EditorTabContainer from "@/components/ui/EditorTabContainer.vue";
+import {ref} from "vue";
+import type {EditorTab} from "@/utils/types";
+const tabs: EditorTab[] = [
+  { id: 1, name: "personal-info" },
+  { id: 2, name: "bio" },
+];
+const openTabs = ref<EditorTab[]>([]);
 const { developer } = useDataStore();
+const onOpenTab = (id: number) => {
+  const tab = tabs.find((t) => t.id === id);
+  if (tab && !openTabs.value.some(t => t.id === id)) {
+    openTabs.value.push(tab);
+  }
+};
+const onCloseTab = (id: number) => {
+  openTabs.value = openTabs.value.filter((t) => t.id !== id);
+};
 </script>
 
 <script lang="ts">export default {name: "AboutMeView"}</script>
