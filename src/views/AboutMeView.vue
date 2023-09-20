@@ -20,8 +20,8 @@
           <div class="flex flex-row space-x-2 items-center">
             <SolidEnvelopIcon class="h-4 w-4" />
             <span>
-              <a href="mailto:contact@tadeoarmenta.com">
-                contact@tadeoarmenta.com
+              <a :href="`mailto:${developer.email}`">
+                {{ developer.email }}
               </a>
             </span>
           </div>
