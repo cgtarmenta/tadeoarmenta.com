@@ -8,13 +8,13 @@
               find me in:
             </div>
           </div>
-          <div class="hidden sm:ml-6 sm:flex sm:flex-row font-semibold">
+          <div class="flex flex-row sm:ml-6  font-semi-bold">
             <template v-for="(social) in developer.social" :key="social">
               <a
                 :href="social.url"
-                class="px-4 py-4 h-full text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"
+                class="p-2 sm:p-4 h-full text-sm font-medium text-slate-500 border-r border-l border-lines hover:text-gray-300"
               >
-                <component :is="icons[social.icon]" class="h-6 w-6" />
+                <component :is="icons[social.icon]" class="h-4 w-4 sm:h-6 sm:w-6" />
               </a>
             </template>
           </div>
@@ -41,11 +41,15 @@ import SolidTwitterIcon from "@/components/icons/SolidTwitterIcon.vue";
 import SolidGithubIcon from "@/components/icons/SolidGithubIcon.vue";
 import SolidLinkedinIcon from "@/components/icons/SolidLinkedinIcon.vue";
 import SolidUpworkIcon from "@/components/icons/SolidUpworkIcon.vue";
+import SolidGitlabIcon from "@/components/icons/SolidGitlabIcon.vue";
+import SolidTelegramIcon from "@/components/icons/SolidTelegramIcon.vue";
 const icons = {
   twitter: SolidTwitterIcon,
   github: SolidGithubIcon,
+  gitlab: SolidGitlabIcon,
   linkedin: SolidLinkedinIcon,
   upwork: SolidUpworkIcon,
+  telegram: SolidTelegramIcon,
 } as {[x:string]: any};
 const {developer} = useDataStore();
 </script>

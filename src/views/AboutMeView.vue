@@ -1,5 +1,12 @@
 <template>
   <PageLayout>
+    <template #task>
+      <div class="flex flex-col space-y-8 p-5">
+        <SolidConsoleIcon class="h-5 w-5 text-lynch hover:text-lynch-200" />
+        <SolidPersonIcon class="h-5 w-5 text-lynch hover:text-lynch-200" />
+        <SolidGamepadIcon class="h-5 w-5 text-lynch hover:text-lynch-200" />
+      </div>
+    </template>
     <template #menu>
       <LabeledCollapsible title="personal-info" border border-class="border-b border-lines" class="text-white">
         <IconCollapsible title="bio" icon="user" :border="false">
@@ -45,6 +52,9 @@ import SolidFolderIcon from "@/components/icons/SolidFolderIcon.vue";
 import CommentedTextBlock from "@/components/ui/CommentedTextBlock.vue";
 import {useDataStore} from "@/stores/dataStore";
 import LineCounterWrapper from "@/components/ui/LineCounterWrapper.vue";
+import SolidConsoleIcon from "@/components/icons/SolidConosleIcon.vue";
+import SolidPersonIcon from "@/components/icons/SolidPersonIcon.vue";
+import SolidGamepadIcon from "@/components/icons/SolidGamepadIcon.vue";
 const { developer } = useDataStore();
 </script>
 
