@@ -29,7 +29,6 @@
 import {ref, provide, watch} from "vue";
 import SolidXIcon from "@/components/icons/SolidXIcon.vue";
 import type {EditorTab} from "@/utils/types";
-import logger from "@/utils/logger";
 interface Props {
   tabs: EditorTab[];
 }
