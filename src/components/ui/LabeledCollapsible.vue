@@ -12,7 +12,7 @@
       </a>
     </slot>
     <div
-        :class="[
+      :class="[
         'rounded border-none w-full my-2 transition-all duration-300 ease-in-out overflow-hidden',
         show ? 'block' : 'hidden',
       ]"
@@ -38,10 +38,12 @@ const props = withDefaults(defineProps<{
   border: true,
   borderClass: ' border border-divider'
 })
+const emit = defineEmits(['toggle'])
 
 const show = ref(props.alwaysOn)
 const toggle = () => {
   show.value = !show.value
+  emit('toggle', show.value)
 }
 </script>
 
