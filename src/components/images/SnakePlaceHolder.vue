@@ -40,7 +40,7 @@
         y2="219.691"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#43D9AD" />
+        <stop stop-color="#43D9AD"  offset="0"/>
         <stop offset="1" stop-color="#43D9AD" stop-opacity="0" />
       </linearGradient>
     </defs>
