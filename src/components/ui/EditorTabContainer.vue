@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- Tab Content -->
-    <div>
+    <div class="h-full">
       <slot :active-tab="activeTab" />
     </div>
   </div>

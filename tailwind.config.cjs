@@ -15,6 +15,9 @@ module.exports = {
       },
       colors: {
         lines: '#1E2D3D',
+        inputBg: '#011221',
+        buttonBg: '#1C2B3A',
+        varColour: '#5565E8',
         violet: {
           '50': '#fcf9fd',
           '100': '#faf3fc',

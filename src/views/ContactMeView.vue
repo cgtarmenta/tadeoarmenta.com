@@ -1,7 +1,7 @@
 <template>
   <PageLayout>
     <template #menu>
-      <LabeledCollapsible title="contacts" border border-class="border-b border-lines" class="text-white">
+      <LabeledCollapsible title="contacts" border border-class="border-b border-lines" class="text-white" @toggle="onOpenTab(1)">
         <div class="flex flex-col space-y-2 text-slate-500">
           <div class="flex flex-row space-x-2 items-center">
             <SolidEnvelopIcon class="h-4 w-4" />
@@ -41,12 +41,7 @@
     <template #tabs>
       <EditorTabContainer :tabs="openTabs" @close-tab="onCloseTab">
         <template #default="{ activeTab }">
-          <div v-if="activeTab?.id === 1">
-
-          </div>
-          <div v-if="activeTab?.id === 2">
-            Content for Tab 2
-          </div>
+          <ContactForm v-if="activeTab?.id === 1"/>
         </template>
       </EditorTabContainer>
     </template>
@@ -62,8 +57,10 @@ import EditorTabContainer from "@/components/ui/EditorTabContainer.vue";
 import {EditorTab} from "@/utils/types";
 import {ref} from "vue";
 import {useDataStore} from "@/stores/dataStore";
+import TAInput from "@/components/ui/TAInput.vue";
+import ContactForm from "@/components/ui/ContactForm.vue";
 const tabs: EditorTab[] = [
-  { id: 1, name: "personal-info" },
+  { id: 1, name: "contacts" },
   { id: 2, name: "bio" },
 ];
 const openTabs = ref<EditorTab[]>([]);
