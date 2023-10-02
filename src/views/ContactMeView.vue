@@ -1,7 +1,7 @@
 <template>
   <PageLayout>
     <template #menu>
-      <LabeledCollapsible title="contacts" border border-class="border-b border-lines" class="text-white">
+      <LabeledCollapsible title="contacts" border border-class="border-b border-lines" class="text-white" @toggle="onOpenTab(1)">
         <div class="flex flex-col space-y-2 text-slate-500">
           <div class="flex flex-row space-x-2 items-center">
             <SolidEnvelopIcon class="h-4 w-4" />
@@ -38,6 +38,13 @@
         </div>
       </LabeledCollapsible>
     </template>
+    <template #tabs>
+      <EditorTabContainer :tabs="openTabs" @close-tab="onCloseTab">
+        <template #default="{ activeTab }">
+          <ContactForm v-if="activeTab?.id === 1"/>
+        </template>
+      </EditorTabContainer>
+    </template>
   </PageLayout>
 </template>
 
@@ -46,6 +53,27 @@ import PageLayout from "@/layout/PageLayout.vue";
 import LabeledCollapsible from "@/components/ui/LabeledCollapsible.vue";
 import SolidEnvelopIcon from "@/components/icons/SolidEnvelopIcon.vue";
 import SolidPhoneIcon from "@/components/icons/SolidPhoneIcon.vue";
+import EditorTabContainer from "@/components/ui/EditorTabContainer.vue";
+import {EditorTab} from "@/utils/types";
+import {ref} from "vue";
+import {useDataStore} from "@/stores/dataStore";
+import TAInput from "@/components/ui/TAInput.vue";
+import ContactForm from "@/components/ui/ContactForm.vue";
+const tabs: EditorTab[] = [
+  { id: 1, name: "contacts" },
+  { id: 2, name: "bio" },
+];
+const openTabs = ref<EditorTab[]>([]);
+const { developer } = useDataStore();
+const onOpenTab = (id: number) => {
+  const tab = tabs.find((t) => t.id === id);
+  if (tab && !openTabs.value.some(t => t.id === id)) {
+    openTabs.value.push(tab);
+  }
+};
+const onCloseTab = (id: number) => {
+  openTabs.value = openTabs.value.filter((t) => t.id !== id);
+};
 </script>
 
 <script lang="ts">export default {name: "ContactMeView"}</script>

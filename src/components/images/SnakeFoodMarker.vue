@@ -13,7 +13,3 @@ export default defineComponent({
     <circle cx="10.8271" cy="10.9636" r="4" fill="#43D9AD" />
   </svg>
 </template>
-
-<style scoped>
-
-</style>

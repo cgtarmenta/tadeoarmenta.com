@@ -5,7 +5,7 @@
       <div
         v-for="tab in tabs"
         :key="tab.id"
-        :class="{ 'border-b-2 border-orange-500': activeTab === tab }"
+        :class="{ 'border-b-2 border-[#4D5BCE]': activeTab === tab }"
         @click="selectTab(tab)"
       >
         <div class="flex flex-row justify-between items-center cursor-pointer px-4 py-2.5 border-r border-lines">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- Tab Content -->
-    <div>
+    <div class="h-full">
       <slot :active-tab="activeTab" />
     </div>
   </div>
