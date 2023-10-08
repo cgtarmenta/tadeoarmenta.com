@@ -1,6 +1,6 @@
 <template>
   <div ref="containerDiv" :class="widthClass" class="relative p-0 max-w-full text-lynch">
-    <pre class="js-comment text-lynch relative z-10 pl-6">{{ formatedText }}</pre>
+    <pre class="js-comment relative z-10 pl-6">{{ formatedText }}</pre>
   </div>
 </template>
 

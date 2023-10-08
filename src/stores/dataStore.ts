@@ -10,10 +10,11 @@ export const useDataStore = defineStore('dataStore', () => {
     description: 'Experienced Software Developer, I\'m adept in bringing forth expertise in design, installation, testing and maintenance of software systems. Proficient in various platforms, languages, and embedded systems. Experienced with the latest cutting edge development tools and procedures.   Able to effectively self-manage during independent projects, as well as collaborate as part of a productive team.',
     title: 'Senior Software Developer',
     email: 'contact@tadeoarmenta.com',
+    workPhone: '+1 (619) 719-0373',
     website: 'https://tadeoarmenta.com',
-    github: 'TadeoArmenta',
+    github: 'cgtarmenta',
     twitter: 'TadeoArmenta',
-    linkedin: 'TadeoArmenta',
+    linkedin: 'tadeoarmenta',
     social: [
       {
         name: 'Github',
