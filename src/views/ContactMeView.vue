@@ -6,15 +6,13 @@
           <div class="flex flex-row space-x-2 items-center">
             <SolidEnvelopIcon class="h-4 w-4" />
             <span>
-              <a href="mailto:contact@tadeoarmenta.com">
-                contact@tadeoarmenta.com
-              </a>
+              <a :href="`mailto:${developer.email}`">{{ developer.email }}</a>
             </span>
           </div>
           <div class="flex flex-row space-x-2 items-center">
             <SolidPhoneIcon class="h-4 w-4" />
             <span>
-              <a href="tel:+34-619-719-0373">+1 (619) 719-0373</a>
+              <a :href="`tel:${developer.workPhone}`">{{developer.workPhone}}</a>
             </span>
           </div>
         </div>
@@ -24,15 +22,13 @@
           <div class="flex flex-row space-x-2 items-center">
             <SolidEnvelopIcon class="h-4 w-4" />
             <span>
-              <a href="mailto:contact@tadeoarmenta.com">
-                contact@tadeoarmenta.com
-              </a>
+              <a :href="`mailto:${developer.email}`">{{ developer.email }}</a>
             </span>
           </div>
           <div class="flex flex-row space-x-2 items-center">
             <SolidPhoneIcon class="h-4 w-4" />
             <span>
-              <a href="tel:+34-619-719-0373">+1 (619) 719-0373</a>
+              <a :href="`tel:${developer.workPhone}`">{{developer.workPhone}}</a>
             </span>
           </div>
         </div>
@@ -54,10 +50,9 @@ import LabeledCollapsible from "@/components/ui/LabeledCollapsible.vue";
 import SolidEnvelopIcon from "@/components/icons/SolidEnvelopIcon.vue";
 import SolidPhoneIcon from "@/components/icons/SolidPhoneIcon.vue";
 import EditorTabContainer from "@/components/ui/EditorTabContainer.vue";
-import {EditorTab} from "@/utils/types";
+import {type EditorTab} from "@/utils/types";
 import {ref} from "vue";
 import {useDataStore} from "@/stores/dataStore";
-import TAInput from "@/components/ui/TAInput.vue";
 import ContactForm from "@/components/ui/ContactForm.vue";
 const tabs: EditorTab[] = [
   { id: 1, name: "contacts" },

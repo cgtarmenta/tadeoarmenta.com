@@ -7,8 +7,8 @@
       </div>
     </div>
     <!-- Content Column -->
-    <div class="flex-grow line-counter-slot-content">
-      <slot />
+    <div class="flex-grow line-counter-slot-content pl-4">
+      <slot name="default"/>
     </div>
   </div>
 </template>
@@ -21,23 +21,29 @@ let resizeObserver: ResizeObserver;
 
 const countRows = (element: Element): number => {
   let rowCount = 0;
-  element.querySelectorAll('.row').forEach(row => {
+  const rows = element.querySelectorAll('.row');
+  console.log('countRows',rows)
+  element.querySelectorAll('.row').forEach(_ => {
     rowCount++;
   });
   return rowCount;
 };
 
 const updateLineNumbers = () => {
+  console.log('updateLineNumbers')
   const slotContent = document.querySelector('.line-counter-slot-content');
+  console.log('updateLineNumbers slotContent',slotContent)
   if (slotContent) {
     const preElement = slotContent.querySelector('pre');
     if (preElement) {
+      console.log('updateLineNumbers pre',preElement)
       // Handle <pre> tag content
       const content = preElement.textContent || "";
       const lines = content.split('\n');
       lineNumbers.value = Array.from({ length: lines.length }, (_, i) => i + 1);
     } else {
       // Handle other HTML content
+      console.log('updateLineNumbers no pre',slotContent)
       const rowCount = countRows(slotContent);
       lineNumbers.value = Array.from({ length: rowCount }, (_, i) => i + 1);
     }
@@ -56,6 +62,10 @@ onMounted(async () => {
     const preElement = document.querySelector("pre");
     if (preElement) {
       resizeObserver.observe(preElement);
+    }
+    const rows = document.querySelectorAll('.row');
+    if (rows.length) {
+      rows?.forEach(row => resizeObserver.observe(row));
     }
   }
 });

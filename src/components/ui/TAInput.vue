@@ -2,6 +2,10 @@
   <div>
     <label for="success" class="block mb-2 text-sm font-medium text-slate-500 dark:text-slate-500" v-text="label" />
     <input
+      v-model="value"
+      v-bind="$attrs"
+      :disabled="disabled"
+      :autocomplete="autocomplete"
       :id="id"
       :type="type"
       class="bg-inputBg border border-lines text-slate-500 dark:text-slate-500 placeholder-lines dark:placeholder-lines text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-inputBg dark:border-lines"
@@ -14,7 +18,7 @@
 import type {RuleExpression} from "vee-validate";
 import {useGeneralUtils} from "@/utils/generalUtils";
 import {useField} from "vee-validate";
-import {computed, ref, watch} from "vue";
+import {watch} from "vue";
 
 export interface TAInputProps {
   id: string
@@ -40,13 +44,9 @@ const props =  withDefaults(defineProps<TAInputProps>(), {
   autocomplete: 'off',
   disabled: false,
 });
-const emit = defineEmits([
-  'update:modelValue',
-  'update:errorMessage',
-  'errorMessage',
-]);
+const emit = defineEmits(['update:modelValue', 'update:errorMessage', 'errorMessage']);
 
-const { errorMessage, value, meta, setErrors, setValue, setState, validate, errors } =
+const { errorMessage, value, meta, setErrors, setValue, setState, validate } =
     useField<string>(props.id || selfID, props.rules || '', {
       initialValue:
           props.initialValue !== undefined
@@ -55,10 +55,8 @@ const { errorMessage, value, meta, setErrors, setValue, setState, validate, erro
       validateOnValueUpdate: true,
       label: props.validationLabel || props.label,
     });
-const isPasswordField = ref(true);
-const passwordMask = computed(() =>
-    isPasswordField.value ? 'password' : 'text',
-);
+// watch for changes of the value
+watch(() => value.value, (newValue) => emit('update:modelValue', newValue), {deep: true});
 /* Monitor validation and emit that info */
 watch(
     () => errorMessage.value,
